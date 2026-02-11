@@ -1,0 +1,3 @@
+# RAM limits for VS Code Git
+[http]
+	postBuffer = 524288000

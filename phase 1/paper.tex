@@ -1,0 +1,114 @@
+\documentclass[12pt, onecolumn, letterpaper]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+% \usepackage{geometry} % IEEEtran handles margins
+
+\title{Evaluating Impact of Stocktwits Sentiment on Investment Trends}
+\author{Joshua Zweber, Bradley Peterson}
+% \date{\today} % IEEEtran normally omits the date in the title block
+
+\begin{document}
+
+\maketitle
+
+\section*{Bibliographical Information}
+
+[1] N. Sharma, M. Soni, S. Kumar, R. Kumar, N. Deb, and A. Shrivastava, “Supervised Machine Learning Method for Ontology-based Financial Decisions in the Stock Market,” ACM Transactions on Asian and Low-Resource Language Information Processing, vol. 22, no. 5, pp. 1–24, May 2023, doi: 10.1145/3554733.
+
+\section{Introduction}
+
+The paper that we selected is the Supervised Machine Learning Method for Ontology-based Financial Decisions in the Stock Market.
+This research paper published on the ACM Transactions on Asian and Low-Resource Language Information Processing in May 2023 uses sentiment analysis collected from the Stocktwits databases to determine the inherent volatility and complexity of predicting stock market trends.
+The author’s aim was to overcome the limitations of the more traditional financial theories such as the Efficient Market Hypothesis which often fails in predicting the impact of investor sentiment on the volatility in the market~[1].
+This paper focuses on classifying stock related messages into positive, negative, and neutral categories to assist in real time decision making.
+The paper proposed combining deep learning with swarm intelligence.
+
+\section{Methodology of the Selected Paper}
+
+\subsection{Data Acquisition and Processing}
+The researchers used 15,000 samples from the Stocktwits database from January 2018 to April 2019~[1].
+The data was cleaned using normalization, removal of punctuation, and tokenization to convert strings into integers for machine learning.
+
+\subsection{Artificial Bee Colony}
+To eliminate irrelevant features and accelerate training, the ABC algorithm was implemented.
+This approach uses novel fitness to select the most relevant data.
+
+\subsection{CNN Classification}
+The optimization features were fed into a Convolutional Neural Network (CNN).
+The CNN acted as a supervised learning classifier and utilized multiple hidden layers and activation functions to predict how the market would transform.
+The authors conclude that by combining ontological knowledge with deep learning algorithms, their model provides a "far superior" understanding of how various events and social sentiments influence stock market behavior~[1].
+While the study focused on a single market due to data scarcity, the framework is designed to be adaptable for long-term use across diverse global financial instruments.
+
+\section{Limitations}
+Although this paper achieved successful results with a CNN, there are some limitations in need of discussion.
+First, the paper focused on a short-term period within the stock market.
+The length of the dataset only spanned from January 2018 to April 2019.
+Since stock market trends are prone to fluctuations, especially over long periods of time, it's worth investigating long-term trends.
+Second, another consideration is how sentiment of major events such as COVID-19 and the great recession of 2008-2009 affect investments.
+Major events may significantly affect the stock market regardless of sentiment.
+Nevertheless, global sentiment may differ from purely negative views.
+For instance, the Russian-Ukraine conflict caused soaring prices in food markets.
+Defense contractors still benefited, and business boomed because of the need for weaponry in this war.
+Sentiment may fluctuate from person to person depending on the industry in play.
+Finally, the paper itself focused on a single market and didn’t provide a wide examination of the entire market; they were limited by the dataset.
+Since the current research team has found a method to scrape the data off Stocktwits, we will have a much larger array of data available for research purposes.
+
+\section{Team Interest}
+The team is interested in expanding the domain knowledge of sentiment analysis.
+Our goal is to understand the role of sentiment in predicting stock market patterns.
+Since recent machine learning models have risen to popularity, there are many possible research contributions in this field.
+
+\section{Summary of Contributions}
+\begin{itemize}
+    \item This paper goes beyond traditional approaches by combining a CNN and ABC algorithm together to find key phrases or information showing a trend.
+    \item The novel fitness function within the ABC algorithm ensures unnecessary data is left out of the prediction.
+    \item Few studies have included “neutral” in their polarity output – with bullish or bearish options. This allows for an option with no correlation or trend.
+    \item The proposed model showed a significantly higher performance than existing models with 99.85\% accuracy.
+\end{itemize}
+
+\section{Project Description}
+The primary goal for this project is to determine whether sentiment analysis of social media discussions using Stockwits can be used to predict trends in the stock market.
+We want to see if messages correlate with, and can meaningfully predict, medium-term and long-term price movements of selected stocks.
+Our motivation for this project is practical as financial markets are influenced heavily by investor psychology and collective sentiment.
+Understanding if sentiments can be quantified and used for prediction can have an impact on algorithmic trading, risk management, and finance behavior.
+
+\subsection{NLP Tasks}
+The main NLP task in this project is sentiment analysis and text classification from social media messages related to the markets.
+So to enable and effective NLP preprocessing several tasks will be performed.
+
+\begin{itemize}
+    \item \textbf{Tokenization} - Splitting text into individual tokens or words.
+    \item \textbf{Text Normalization} - Lowercasing all text to ensure consistency.
+    \item \textbf{Noise Removal} - Removing stop words, URLs, punctuation, emojis, and special characters.
+\end{itemize}
+
+\subsection{Data Acquisition}
+We will use historical financial sentiment and market data from the Stocktwits public API.
+Stocktwits provides message-level data for individual stocks, including timestamps, user sentiment labels (bullish/bearish/neutral), message text, and engagement metrics.
+We plan to use data starting from January of 2021 to December of 2025.
+For processing the data, we plan to convert the sentiment data into numeric values.
+Bullish = 1, Bearish = -1, Neutral = 0 so our ML model has an easier time reading the data.
+
+\section{Models}
+During the implementation of this project, our team will be using multiple models to test which performs the best on the dataset.
+To find the best predictions in the chosen sentiment analysis dataset, we will establish a baseline by utilizing an SVM.
+Traditionally, SVMs have been overshadowed by recent strategies such as the CNN/ABC algorithms found in the paper by Sharma et al.~[1].
+Nevertheless, an SVM will provide an excellent baseline for model performance.
+
+The main library contributing to the baseline model is sci-kit learn which will provide advanced statistical calculations.
+We will also compare our results to the Sharma et al. to see how our results compare (along with other recent studies)~[1].
+It’s important to note that their CNN/ABC model will not be replicated due to its complexity.
+
+We will proceed to train ensemble models to compare results with our baseline model.
+The first model will be an LSTM (long-short term model), that will take extensive textual data from sentiment analysis and transcribe a bullish, bearish, or neutral category to the text.
+This is imperative because LSTMs can handle more lengthy textual input and find patterns inside; the algorithms excel at connecting information from earlier in a sequence.
+The second model will be a classification model testing the accuracy of predictions of a bullish, bearish, or neutral category.
+The final model will use the “bagging” strategy with random forest to combine multiple decision trees.
+
+\section{Evaluation}
+Once the models have been trained, we will evaluate them using the accuracy metric to score the number of correct predictions.
+Furthermore, precision, recall, and the classic F1 score will also measure the ability of each model to score correctly.
+The metrics will be compared with the baseline, and the CNN valuation by Sharma et al to find the best performance.
+
+\end{document}
