@@ -3,6 +3,7 @@ pandas
 numpy
 seaborn
 scikit-learn
+xgboost
 fuzzywuzzy
 collections
 nltk
