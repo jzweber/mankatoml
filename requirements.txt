@@ -7,3 +7,4 @@ xgboost
 fuzzywuzzy
 collections
 nltk
+tensorflow
