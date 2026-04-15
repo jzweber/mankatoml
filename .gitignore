@@ -3,3 +3,13 @@
 *.csv
 *.xlsx
 *.xls
+
+# Large assets / embeddings (do not commit)
+phase 4/embeddings/
+*.bin
+*.vec
+*.h5
+*.pt
+*.pth
+*.ckpt
+*.onnx
